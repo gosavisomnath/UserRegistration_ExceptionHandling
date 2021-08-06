@@ -40,5 +40,11 @@ public class UserRegistrationTest {
         boolean result = name.validPasswordAtLeastOneUpperCase(password);
         Assert.assertTrue(result);
     }
+    @Test
+    public void ValidPasswordAtLeastOneNumericValue(){
+        String password = "S12sdkf4";
+        boolean result = name.validPasswordAtLeastOneNumericValue(password);
+        Assert.assertTrue(result);
+    }
 }
 

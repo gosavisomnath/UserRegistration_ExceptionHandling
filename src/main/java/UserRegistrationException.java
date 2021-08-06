@@ -95,5 +95,20 @@ public class UserRegistrationException {
         }
         return false;
     }
+    public boolean validPasswordAtLeastOneNumericValue(String password) {
+        Scanner sc = new Scanner(System.in);
+        boolean result = Pattern.matches("^([A-Z]{1})+([0-9]{1,})+([A-Za-z0-9]{6,})$", password);
+        try {
+            if (result) {
+                System.out.println("Password is Valid: ");
+            } else {
+                throw new CustomException("Password is Invalid. Please Enter Valid Password: ");
+            }
+            return true;
+        } catch (CustomException e) {
+            System.out.println(e.getMessage());
+        }
+        return false;
+    }
 
 }
