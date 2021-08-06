@@ -11,27 +11,33 @@ public class UserRegistrationTest {
         Assert.assertTrue(result);
     }
     @Test
-    public void ValidLastName(){
+    public void validLastName(){
         String lastName = "Gosavi";
         boolean result = name.validLastName(lastName);
         Assert.assertTrue(result);
     }
     @Test
-    public void ValidEmail(){
+    public void validEmail(){
         String email = "abc.xyz@bl.co.in";
         boolean result = name.validEmail(email);
         Assert.assertTrue(result);
     }
     @Test
-    public void ValidMobileNumber(){
+    public void validMobileNumber(){
         String num = "91 1234567890";
         boolean result = name.validMobileNumber(num);
         Assert.assertTrue(result);
     }
     @Test
-    public void ValidPassword(){
+    public void validPassword(){
         String password = "somnath1";
         boolean result = name.validPassword(password);
+        Assert.assertTrue(result);
+    }
+    @Test
+    public void validPasswordAtLeastOneUpperCase(){
+        String password = "Somnath1";
+        boolean result = name.validPasswordAtLeastOneUpperCase(password);
         Assert.assertTrue(result);
     }
 }
