@@ -10,4 +10,11 @@ public class UserRegistrationTest {
         boolean result = name.validfirstName(firstName);
         Assert.assertTrue(result);
     }
+    @Test
+    public void ValidLastName(){
+        String lastName = "Gosavi";
+        boolean result = name.validLastName(lastName);
+        Assert.assertTrue(result);
+    }
 }
+
