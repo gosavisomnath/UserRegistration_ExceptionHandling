@@ -41,9 +41,15 @@ public class UserRegistrationTest {
         Assert.assertTrue(result);
     }
     @Test
-    public void ValidPasswordAtLeastOneNumericValue(){
+    public void validPasswordAtLeastOneNumericValue(){
         String password = "S12sdkf4";
         boolean result = name.validPasswordAtLeastOneNumericValue(password);
+        Assert.assertTrue(result);
+    }
+    @Test
+    public void validPasswordAtLeastOneSpecialChar(){
+        String password = "K1@nhanj";
+        boolean result = name.validPasswordAtLeastOneSpecialChar(password);
         Assert.assertTrue(result);
     }
 }
