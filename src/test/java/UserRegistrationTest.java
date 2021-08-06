@@ -16,5 +16,11 @@ public class UserRegistrationTest {
         boolean result = name.validLastName(lastName);
         Assert.assertTrue(result);
     }
+    @Test
+    public void ValidEmail(){
+        String email = "abc.xyz@bl.co.in";
+        boolean result = name.validEmail(email);
+        Assert.assertTrue(result);
+    }
 }
 
