@@ -50,5 +50,20 @@ public class UserRegistrationException {
         }
         return false;
     }
+    public boolean validMobileNumber(String num) {
+        Scanner sc = new Scanner(System.in);
+        boolean result = Pattern.matches("^([0-9]{2}) ([1-9]{1}[0-9]{9,})$",num);
+        try {
+            if (result) {
+                System.out.println("Mobile Number is Valid");
+            } else {
+                throw new CustomException("Mobile Number is Invalid: Please Enter Valid Password");
+            }
+            return true;
+        } catch (CustomException e) {
+            System.out.println(e.getMessage());
+        }
+        return false;
+    }
 
 }
