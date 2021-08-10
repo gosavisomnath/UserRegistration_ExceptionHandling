@@ -1,5 +1,6 @@
 import org.junit.Assert;
 import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
 
 public class UserRegistrationTest {
     UserRegistrationException name = new UserRegistrationException();
@@ -51,6 +52,13 @@ public class UserRegistrationTest {
         String password = "K1@nhanj";
         boolean result = name.validPasswordAtLeastOneSpecialChar(password);
         Assert.assertTrue(result);
+    }
+    @Test
+    public void givenMessage_WhenNotSad_ShouldReturnHappy() {
+        UserRegistrationException userRegistrationException = null;
+        String mood = userRegistrationException.analyseMood("This is a Happy Message");
+        Assertions.assertEquals("Happy", mood);
+
     }
 }
 

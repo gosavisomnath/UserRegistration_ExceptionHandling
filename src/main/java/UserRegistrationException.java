@@ -125,5 +125,11 @@ public class UserRegistrationException {
         }
         return false;
     }
+    public String analyseMood(String message) {
+        if (message.contains("SAD"))
+            return "SAD";
+        else
+            return "Happy";
+    }
 
 }
