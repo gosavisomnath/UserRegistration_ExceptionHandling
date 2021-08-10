@@ -1,4 +1,5 @@
 CustomException.java
  CustomException
-UserRegistrationException.java
- UserRegistrationException
+UserValidationProcess.java
+ UserValidationProcess
+ lambdaValidationFun

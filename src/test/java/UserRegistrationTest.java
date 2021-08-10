@@ -1,56 +1,169 @@
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
-public class UserRegistrationTest {
-    UserRegistrationException name = new UserRegistrationException();
+public class UserRegistrationTest
+{
+    UserValidationProcess userValidationProcess = new UserValidationProcess();
+
+    //for firstName Validation
+    @Test
+    public void givenFirstName_WhenFirstNameStartsWithCapitalLetter_ShouldReturn_True()
+    {
+        boolean result = userValidationProcess.validateFirstName("Shubham");
+        Assertions.assertTrue(result);
+    }
 
     @Test
-    public void validfirstName() {
-        String firstName = "Ajay";
-        boolean result = name.validfirstName(firstName);
-        Assert.assertTrue(result);
+    public void givenFirstName_WhenFirstNameInLowerCase_ShouldReturn_false()
+    {
+        boolean result = userValidationProcess.validateFirstName("Somnath");
+        Assertions.assertFalse(result);
+    }
+
+    @Test
+    public void givenFirstName_WhenFirstNameStartHaveMinThreeLetters_ShouldReturn_True()
+    {
+        boolean result = userValidationProcess.validateFirstName("Som");
+        Assertions.assertTrue(result);
+    }
+
+    @Test
+    public void givenFirstName_WhenFirstNameStartWithLessThanThreeLetters_ShouldReturn_False()
+    {
+        boolean result = userValidationProcess.validateFirstName("Pk");
+        Assertions.assertFalse(result);
+    }
+
+    //For lastName Validation
+    @Test
+    public void givenLastName_WhenLastNameStartsWithCapitalLetter_ShouldReturn_True()
+    {
+        boolean result = userValidationProcess.validateLastName("Gosavi");
+        Assertions.assertTrue(result);
     }
     @Test
-    public void validLastName(){
-        String lastName = "Gosavi";
-        boolean result = name.validLastName(lastName);
-        Assert.assertTrue(result);
+    public void givenLastName_WhenLastNameInLowerCase_ShouldReturn_false()
+    {
+        boolean result = userValidationProcess.validateLastName("abdefgh");
+        Assertions.assertFalse(result);
     }
     @Test
-    public void validEmail(){
-        String email = "abc.xyz@bl.co.in";
-        boolean result = name.validEmail(email);
-        Assert.assertTrue(result);
+    public void givenLastName_WhenLastNameStartHaveMinThreeLetters_ShouldReturn_True()
+    {
+        boolean result = userValidationProcess.validateLastName("Kan");
+        Assertions.assertTrue(result);
     }
     @Test
-    public void validMobileNumber(){
-        String num = "91 1234567890";
-        boolean result = name.validMobileNumber(num);
-        Assert.assertTrue(result);
+    public void givenLastName_WhenLastNameStartWithLessThanThreeLetters_ShouldReturn_False()
+    {
+        boolean result = userValidationProcess.validateLastName("Ka");
+        Assertions.assertFalse(result);
+    }
+
+
+    //For Email Validation
+    @Test
+    public void givenEmail_WhenEmailContainMinimumTwoLetterAfterDot_ShouldReturn_True()
+    {
+        boolean result = userValidationProcess.validateEmail("lmn@gmail.co");
+        Assertions.assertTrue(result);
     }
     @Test
-    public void validPassword(){
-        String password = "somnath1";
-        boolean result = name.validPassword(password);
-        Assert.assertTrue(result);
+    public void givenEmail_WhenEmailContainOnlyOneLetterAfterDot_ShouldReturn_False()
+    {
+        boolean result = userValidationProcess.validateEmail("abc@gmail.c");
+        Assertions.assertFalse(result);
     }
     @Test
-    public void validPasswordAtLeastOneUpperCase(){
-        String password = "Somnath1";
-        boolean result = name.validPasswordAtLeastOneUpperCase(password);
-        Assert.assertTrue(result);
+    public void givenEmail_WhenEmailStartsWithCapitalLetter_ShouldReturn_True()
+    {
+        boolean result = userValidationProcess.validateEmail("Somnath@gmail.com");
+        Assertions.assertTrue(result);
+    }
+
+    //for Mobile Number Validation
+
+    @Test
+    public void givenPhoneNumber_WhenPhoneNumberIsFollowedByCountryCode_True()
+    {
+        boolean result = userValidationProcess.validateMobileNumber("91 8149240833");
+        Assertions.assertTrue( result);
     }
     @Test
-    public void validPasswordAtLeastOneNumericValue(){
-        String password = "S12sdkf4";
-        boolean result = name.validPasswordAtLeastOneNumericValue(password);
-        Assert.assertTrue(result);
+    public void givenPhoneNumber_WhenPhoneNumberIsNOtFollowedByCountryCode_False()
+    {
+        boolean result = userValidationProcess.validateMobileNumber("8149240833");
+        Assertions.assertFalse( result);
     }
     @Test
-    public void validPasswordAtLeastOneSpecialChar(){
-        String password = "K1@nhanj";
-        boolean result = name.validPasswordAtLeastOneSpecialChar(password);
-        Assert.assertTrue(result);
+    public void givenPhoneNumber_WhenPhoneNumberIsNOTTenDigit_False()
+    {
+        boolean result = userValidationProcess.validateMobileNumber("91 14924");
+        Assertions.assertFalse( result);
+    }
+    @Test
+    public void givenPhoneNumber_WhenPhoneNumberNOTFollowedSpaceBetweenCountryCode_False()
+    {
+        boolean result = userValidationProcess.validateMobileNumber("918149240833");
+        Assertions.assertFalse(result);
+    }
+
+    //for Password Validation with minimum 8 character
+    @Test
+    public void givenPassword_WhenPasswordHaveMinimum8Characters_ShouldReturn_true()
+    {
+        boolean result = userValidationProcess.validatePassword("Somnath14");
+        Assertions.assertTrue(result);
+    }
+    @Test
+    public void givenPassword_WhenPasswordHaveLessThan8Characters_ShouldReturn_false()
+    {
+        boolean result = userValidationProcess.validatePassword("gfbn");
+        Assertions.assertFalse(result);
+    }
+    //for Password Validation with At least one uppercase
+    @Test
+    public void givenPassword_WhenPasswordHaveAtleast1UpperCase_ShouldReturn_true()
+    {
+        boolean result = userValidationProcess.passwordAtLeastOneUpperCase("Somnath141996");
+        Assertions.assertTrue(result);
+    }
+    @Test
+    public void givenPassword_WhenPasswordDoNotHaveAtleast1UpperCase_ShouldReturn_false()
+    {
+        boolean result = userValidationProcess.passwordAtLeastOneUpperCase("somnath141996");
+        Assertions.assertFalse(result);
+    }
+    @Test
+    public void givenPassword_WhenPasswordHaveAtleast1Digit_ShouldReturn_true()
+    {
+        boolean result = userValidationProcess.validateAlteastOneNumber("S14omna1996");
+        Assertions.assertTrue(result);
+    }
+    @Test
+    public void givenPassword_WhenPasswordDoNotHaveAnyDigit_ShouldReturn_false()
+    {
+        boolean result = userValidationProcess.validateAlteastOneNumber("Somnath@");
+        Assertions.assertFalse(result);
+    }
+    @Test
+    public void givenPassword_WhenPasswordHaveAtleast1SpecialCharacter_ShouldReturn_true()
+    {
+        boolean result = userValidationProcess.validateSpecialCharacter("S1@omna12");
+        Assertions.assertTrue(result);
+    }
+    @Test
+    public void givenPassword_WhenPasswordDoNotHaveAnySpecialCharacter_ShouldReturn_false()
+    {
+        boolean result = userValidationProcess.validateSpecialCharacter("Soma1412");
+        Assertions.assertFalse(result);
+    }
+    @Test
+    public  void givenMessage_WhenNotSad_ShouldReturnHappy()
+    {
+
+        String mood = userValidationProcess.analyseMood("This is a Happy Message");
+        Assertions.assertEquals("Happy", mood);
+
     }
 }
-

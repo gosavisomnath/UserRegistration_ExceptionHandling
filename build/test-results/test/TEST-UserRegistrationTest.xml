@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="UserRegistrationTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-08-06T08:45:53" hostname="DESKTOP-FR29MEN" time="0.01">
-  <properties/>
-  <testcase name="validPasswordAtLeastOneSpecialChar" classname="UserRegistrationTest" time="0.01"/>
-  <system-out><![CDATA[Password is Valid: 
-]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
